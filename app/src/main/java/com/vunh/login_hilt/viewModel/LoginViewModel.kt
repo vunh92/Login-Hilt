@@ -12,6 +12,7 @@ import com.vunh.login_hilt.repository.login.LoginRepositoryImpl
 import com.vunh.login_hilt.usecase.UseCaseResult
 import com.vunh.login_hilt.users.UserManager
 import com.vunh.login_hilt.utils.AppUtils.validateEmail
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,7 +20,8 @@ import retrofit2.Response
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class LoginViewModel(
+@HiltViewModel
+class LoginViewModel @Inject constructor(
     private val loginRepositoryImp: LoginRepositoryImpl,
     private val userManager: UserManager,
     ) : ViewModel() , CoroutineScope {

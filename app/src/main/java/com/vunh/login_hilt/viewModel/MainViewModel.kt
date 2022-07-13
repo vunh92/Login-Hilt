@@ -3,12 +3,15 @@ package com.vunh.login_hilt.viewModel
 import androidx.lifecycle.ViewModel
 import com.vunh.login_hilt.repository.login.LoginRepositoryImpl
 import com.vunh.login_hilt.users.UserManager
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class MainViewModel (
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val loginRepositoryImp: LoginRepositoryImpl,
     private val userManager: UserManager
 ) : ViewModel() , CoroutineScope {

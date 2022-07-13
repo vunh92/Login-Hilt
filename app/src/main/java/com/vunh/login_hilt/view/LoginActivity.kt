@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
@@ -14,25 +15,20 @@ import com.vunh.login_hilt.utils.AppUtils.afterTextChanged
 import com.vunh.login_hilt.utils.AppUtils.isEnable
 import com.vunh.login_hilt.utils.AppUtils.validateEmail
 import com.vunh.login_hilt.viewModel.LoginViewModel
-import com.vunh.login_hilt.viewModel.LoginViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
-    lateinit var viewModel: LoginViewModel
-    @Inject
-    lateinit var viewModelFactory: LoginViewModelFactory
+    private val viewModel: LoginViewModel by viewModels()
     private lateinit var binding: ActivityLoginBinding
-//    private lateinit var loginRepositoryImpl: LoginRepositoryImpl
 
     override fun onCreate(savedInstanceState: Bundle?) {
 //        (application as BaseApp).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        loginRepositoryImpl = LoginRepositoryImpl(loginService)
-//        viewModelFactory = LoginViewModelFactory(loginRepositoryImpl)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
+//        viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
 
         initializeView()
         initializeViewModel()

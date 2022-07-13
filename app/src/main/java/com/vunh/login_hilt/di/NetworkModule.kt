@@ -12,6 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Qualifier
 import javax.inject.Singleton
 
+@InstallIn(SingletonComponent::class)
 @Module
 class NetworkModule {
 

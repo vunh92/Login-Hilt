@@ -1,11 +1,7 @@
 package com.vunh.login_hilt
 
 import android.app.Application
-import com.vunh.login_hilt.di.AppComponent
-import com.vunh.login_hilt.di.DaggerAppComponent
+import dagger.hilt.android.HiltAndroidApp
 
-class BaseApp : Application() {
-    val appComponent: AppComponent by lazy {
-        DaggerAppComponent.factory().create(applicationContext)
-    }
-}
+@HiltAndroidApp
+class BaseApp : Application()
